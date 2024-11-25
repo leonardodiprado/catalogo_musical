@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Gênero</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Catálogo Musical</h1>
+    </header>
+
+    <div class="container">
+        <h2>Detalhes do Gênero: <%= genero.nome %></h2>
+
+        <h3>Discos Associados</h3>
+        <ul>
+            <% genero.discos.forEach(function(disco) { %>
+                <li>
+                    <strong><%= disco.titulo %></strong> - <%= disco.anoLancamento %>
+                    <ul>
+                        <li>Artista: <%= disco.artista ? disco.artista.nome : 'Desconhecido' %></li>
+                    </ul>
+                </li>
+            <% }); %>
+        </ul>
+        <a href="/generos">Voltar à Lista de Gêneros</a>
+    </div>
+</body>
+</html>

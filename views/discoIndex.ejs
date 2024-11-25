@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Musical</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Catálogo Musical</h1>
+    </header>
+
+    <div class="container">
+        <h2>Lista de Discos</h2>
+
+        <!-- Formulário de Busca -->
+        <form action="/discos/search" method="GET">
+            <input type="text" name="query" placeholder="Buscar discos...">
+            <button type="submit">Buscar</button>
+        </form>
+
+        <ul>
+            <% discos.forEach(function(disco) { %>
+                <li>
+                    <div>
+                        <img src="<%= disco.capa %>" alt="Capa de <%= disco.titulo %>" style="width:150px;height:150px;"/>
+                    </div>
+                    <div>
+                        <strong>Título:</strong> <%= disco.titulo %><br>
+                        <strong>Artista:</strong> <%= disco.artista ? disco.artista.nome : 'Artista desconhecido' %><br>
+                        <strong>Ano de Lançamento:</strong> <%= disco.anoLancamento %><br>
+                        <strong>Gêneros:</strong> <%= disco.generos.map(g => g.nome).join(', ') %>
+                    </div>
+                    <div>
+                        <a href="/disco/edit/<%= disco.id %>">Editar</a>
+                        <form action="/disco/delete/<%= disco.id %>" method="POST" style="display: inline;">
+                            <button type="submit">Remover</button>
+                        </form>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+        <a href="/disco/create">Cadastrar Novo Disco</a>
+        
+        <!-- Adicionar links para Artistas e Gêneros abaixo -->
+        <div style="margin-top: 20px;">
+            <p><a href="/artistas">Lista de Artistas</a></p>
+            <p><a href="/generos">Lista de Gêneros Musicais</a></p>
+        </div>
+    </div>
+</body>
+</html>

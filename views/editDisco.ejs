@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Disco</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Catálogo Musical</h1>
+    </header>
+
+    <div class="container">
+        <h2>Editar Disco</h2>
+        <form action="/disco/edit/<%= disco.id %>" method="POST">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" value="<%= disco.titulo %>" required><br><br>
+            <label for="anoLancamento">Ano de Lançamento:</label>
+            <input type="number" id="anoLancamento" name="anoLancamento" value="<%= disco.anoLancamento %>" required><br><br>
+            <label for="capa">Capa (URL da Imagem):</label>
+            <input type="text" id="capa" name="capa" value="<%= disco.capa %>" required><br><br>
+            <label for="faixas">Faixas (JSON):</label>
+            <textarea id="faixas" name="faixas" required><%= JSON.stringify(disco.faixas) %></textarea><br><br>
+            <button type="submit">Salvar</button>
+        </form>
+        <a href="/discos">Voltar à Lista de Discos</a>
+    </div>
+</body>
+</html>

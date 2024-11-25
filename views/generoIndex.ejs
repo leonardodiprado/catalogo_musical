@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Gêneros</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Catálogo Musical</h1>
+    </header>
+
+    <div class="container">
+        <h2>Lista de Gêneros</h2>
+
+        <!-- Formulário de Busca -->
+        <form action="/generos/search" method="GET">
+            <input type="text" name="query" placeholder="Buscar gêneros...">
+            <button type="submit">Buscar</button>
+        </form>
+
+        <ul>
+            <% generos.forEach(function(genero) { %>
+                <li>
+                    <div>
+                        <strong><a href="/genero/<%= genero.id %>"><%= genero.nome %></a></strong>
+                    </div>
+                    <div>
+                        <a href="/genero/edit/<%= genero.id %>">Editar</a>
+                        <form action="/genero/delete/<%= genero.id %>" method="POST" style="display: inline;">
+                            <button type="submit">Remover</button>
+                        </form>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>

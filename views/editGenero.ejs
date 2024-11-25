@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Gênero</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Catálogo Musical</h1>
+    </header>
+
+    <div class="container">
+        <h2>Editar Gênero</h2>
+        <form action="/genero/edit/<%= genero.id %>" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" value="<%= genero.nome %>" required><br><br>
+            <button type="submit">Salvar</button>
+        </form>
+        <a href="/generos">Voltar à Lista de Gêneros</a>
+    </div>
+</body>
+</html>

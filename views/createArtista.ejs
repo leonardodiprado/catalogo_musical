@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Artista</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Catálogo Musical</h1>
+    </header>
+
+    <div class="container">
+        <h2>Cadastrar Artista</h2>
+        <form action="/artista/create" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
+
+            <label for="discos">Discos:</label>
+            <select id="discos" name="discos" multiple>
+                <% discos.forEach(function(disco) { %>
+                    <option value="<%= disco.id %>"><%= disco.titulo %> (<%= disco.anoLancamento %>)</option>
+                <% }); %>
+            </select><br><br>
+
+            <label for="generos">Gêneros:</label>
+            <input type="text" id="generos" name="generos" placeholder="Digite os gêneros separados por vírgula"><br><br>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+        <br>
+        <a href="/discos">Voltar para a Página Inicial</a>
+    </div>
+</body>
+</html>

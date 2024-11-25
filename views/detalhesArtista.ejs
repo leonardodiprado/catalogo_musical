@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Artista</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Catálogo Musical</h1>
+    </header>
+
+    <div class="container">
+        <h2>Detalhes do Artista: <%= artista.nome %></h2>
+        <h3>Gênero: <%= artista.genero %></h3>
+
+        <h3>Discos Associados</h3>
+        <ul>
+            <% artista.discos.forEach(function(disco) { %>
+                <li>
+                    <strong><%= disco.titulo %></strong> - <%= disco.anoLancamento %>
+                </li>
+            <% }); %>
+        </ul>
+        <a href="/artistas">Voltar à Lista de Artistas</a>
+    </div>
+</body>
+</html>

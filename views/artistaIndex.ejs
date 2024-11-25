@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Artistas</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Catálogo Musical</h1>
+    </header>
+
+    <div class="container">
+        <h2>Lista de Artistas</h2>
+
+        <!-- Formulário de Busca -->
+        <form action="/artistas/search" method="GET">
+            <input type="text" name="query" placeholder="Buscar artistas...">
+            <button type="submit">Buscar</button>
+        </form>
+
+        <ul>
+            <% artistas.forEach(function(artista) { %>
+                <li>
+                    <div>
+                        <a href="/artista/<%= artista.id %>"><strong><%= artista.nome %></a></strong> - <%= artista.genero %>
+                    </div>
+                    <div>
+                        <a href="/artista/edit/<%= artista.id %>">Editar</a>
+                        <form action="/artista/delete/<%= artista.id %>" method="POST" style="display: inline;">
+                            <button type="submit">Remover</button>
+                        </form>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+        <a href="/artista/create">Cadastrar Novo Artista</a>
+    </div>
+</body>
+</html>
